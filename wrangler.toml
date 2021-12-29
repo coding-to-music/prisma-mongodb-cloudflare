@@ -1,5 +1,6 @@
 name = "prisma-mongodb-cloudflare"
 type = "webpack"
+webpack_config = "webpack.config.js"
 route = ''
 zone_id = ''
 usage_model = ''
