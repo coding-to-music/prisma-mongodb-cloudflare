@@ -194,7 +194,7 @@ This data model will be used to store incoming requests from your Worker.
 
 To prepare for the steps ahead, let's [create a private repository](https://github.com/new) on GitHub.
 
-![Create a private repository](./450-01-create-repo.png)
+![Create a private repository](https://github.com/coding-to-music/prisma-mongodb-cloudflare/blob/main/images/450-01-create-repo.png?raw=true)
 
 Next, initialize your repository, then push your changes up to GitHub.
 
@@ -214,15 +214,16 @@ With Cloudflare Workers, you can't directly access your database because there i
 
 To get started, sign up for a free [Prisma Data Platform account](https://cloud.prisma.io/).
 
-![Signup for Prisma Data Platform](./450-02-signup-pdp.png)
+![Signup for Prisma Data Platform](https://github.com/coding-to-music/prisma-mongodb-cloudflare/blob/main/images/450-02-signup-pdp.png?raw=true)
+
 
 Once you're in, click **New Project**, then **Import a Project**. Fill in the repository and project details, and then click **Create Project**.
 
-![Import a Project](./450-03-import-project.png)
+![Import a Project](https://github.com/coding-to-music/prisma-mongodb-cloudflare/blob/main/images/450-03-import-project.png?raw=true)
 
 Next, you'll connect the Prisma Data Platform to MongoDB Atlas database and set up the Prisma Data Proxy:
 
-![Connect your Database](./450-04-connect-db.png)
+![Connect your Database](https://github.com/coding-to-music/prisma-mongodb-cloudflare/blob/main/images/450-04-connect-db.png?raw=true)
 
 Click **Create Project** to test the connection and set up the Data Proxy.
 
@@ -236,7 +237,7 @@ different database name. Using the screenshot above, that would be renaming
 
 If all goes well, you'll be greeted with a new connection string that starts with `prisma://`. Copy this connection string to your clipboard.
 
-![Data Proxy Page](./450-05-data-proxy.png)
+![Data Proxy Page](https://github.com/coding-to-music/prisma-mongodb-cloudflare/blob/main/images/450-05-data-proxy.png?raw=true)
 
 Then you can hop back into your code editor and paste the connection string into your `.env` file:
 
@@ -311,7 +312,7 @@ request method: GET!
 
 Refresh the page a couple times to verify that it's working. Now if you click on the **Data Browser** tab on your Prisma Cloud project, you should see Info logs written to your database.
 
-![Prisma Data Browser](./450-06-data-browser.png)
+![Prisma Data Browser](https://github.com/coding-to-music/prisma-mongodb-cloudflare/blob/main/images/450-06-data-browser.png?raw=true)
 
 It's working locally!
 
