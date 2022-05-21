@@ -19,6 +19,6 @@
     "webpack": "^5.72.1"
   },
   "dependencies": {
-    "@prisma/client": "^3.7.0"
+    "@prisma/client": "^3.14.0"
   }
 }
