@@ -38,7 +38,6 @@ git commit -m "first commit"
 git branch -M main
 git remote add origin git@github.com:coding-to-music/prisma-mongodb-cloudflare.git
 git push -u origin main
-vercel --prod --confirm
 ```
 
 https://vercel.com/guides/nextjs-prisma-postgres
@@ -283,6 +282,43 @@ enum Level {
 ```
 
 This data model will be used to store incoming requests from your Worker.
+
+```java
+npx prisma db push
+```
+
+Output
+
+```java
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Error: Get config: Schema Parsing P1012
+
+error: Error validating datasource `db`: the URL must start with the protocol `mongo`.
+  -->  schema.prisma:11
+   |
+10 |   provider = "mongodb"
+11 |   url      = env("DATABASE_URL")
+   |
+
+Validation Error Count: 1
+```
+
+So I changed the Database URL to now point to the Atlas MongoDB rather than the AWS proxy, worked, created the schema on Atlas and thus cloud.Prisma will by synched correctly
+
+```java
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db"
+Applying the following changes:
+
+[+] Collection `Log`
+
+
+🚀  Your database is now in sync with your schema. Done in 635ms
+
+✔ Generated Prisma Client (3.14.0 | library) to ./node_modules/@prisma/client in 116ms
+```
 
 ## 6. Create Repository and Push to GitHub
 
