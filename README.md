@@ -42,6 +42,14 @@ git push -u origin main
 
 https://vercel.com/guides/nextjs-prisma-postgres
 
+# To actually create the tables in your database, you now can use the following command of the Prisma CLI:
+
+- be sure to set DATABASE_URL to the Atlas database not the AWS proxy
+
+```java
+npx prisma db push
+```
+
 ## Step 3. Install and generate Prisma Client
 
 Before you can access your database from Next.js using Prisma, you first need to install Prisma Client in your app. You can install it via npm as follows:
@@ -282,6 +290,8 @@ enum Level {
 ```
 
 This data model will be used to store incoming requests from your Worker.
+
+# To actually create the tables in your database, you now can use the following command of the Prisma CLI:
 
 ```java
 npx prisma db push
