@@ -1,9 +1,11 @@
 # Deploy a TypeScript application to Cloudflare Workers that connects to MongoDB Atlas using Prisma
 
 ---
+
 title: 'Deploying to Cloudflare Workers'
 metaTitle: 'Deploying to Cloudflare Workers'
 metaDescription: 'Learn how to deploy a TypeScript application to Cloudflare Workers that connects to MongoDB Atlas.'
+
 ---
 
 https://www.prisma.io/docs/guides/deployment/deployment-guides/deploying-to-cloudflare-workers
@@ -159,6 +161,24 @@ Now you're ready to add Prisma to the project.
 npx prisma init
 ```
 
+```java
+
+✔ Your Prisma schema was created at prisma/schema.prisma
+  You can now open it in your favorite editor.
+
+warn Prisma would have added DATABASE_URL but it already exists in .env
+warn You already have a .gitignore. Don't forget to exclude .env to not commit any secret.
+
+Next steps:
+1. Set the DATABASE_URL in the .env file to point to your existing database. If your database has no tables yet, read https://pris.ly/d/getting-started
+2. Set the provider of the datasource block in schema.prisma to match your database: postgresql, mysql, sqlite, sqlserver, mongodb or cockroachdb (Preview).
+3. Run prisma db pull to turn your database schema into a Prisma schema.
+4. Run prisma generate to generate the Prisma Client. You can then start querying your database.
+
+More information in our documentation:
+https://pris.ly/d/getting-started
+```
+
 This will create a Prisma Schema in `prisma/schema.prisma` and an `.env` file.
 
 Inside `prisma/schema.prisma`, add the following schema:
@@ -216,7 +236,6 @@ To get started, sign up for a free [Prisma Data Platform account](https://cloud.
 
 ![Signup for Prisma Data Platform](https://github.com/coding-to-music/prisma-mongodb-cloudflare/blob/main/images/450-02-signup-pdp.png?raw=true)
 
-
 Once you're in, click **New Project**, then **Import a Project**. Fill in the repository and project details, and then click **Create Project**.
 
 ![Import a Project](https://github.com/coding-to-music/prisma-mongodb-cloudflare/blob/main/images/450-03-import-project.png?raw=true)
@@ -272,29 +291,29 @@ Please be aware that the proxy-enabled Prisma Client is in Early Access and subj
 You're now ready to create a Cloudflare Worker. Create a `src/index.ts` file with the following code:
 
 ```ts
-import { PrismaClient } from '@prisma/client'
-const prisma = new PrismaClient()
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 
-addEventListener('fetch', (event) => {
-  event.respondWith(handleEvent(event))
-})
+addEventListener("fetch", (event) => {
+  event.respondWith(handleEvent(event));
+});
 
 async function handleEvent(event: FetchEvent): Promise<Response> {
-  const { request } = event
+  const { request } = event;
 
   // waitUntil method is used for sending logs, after response is sent
   event.waitUntil(
     prisma.log.create({
       data: {
-        level: 'Info',
+        level: "Info",
         message: `${request.method} ${request.url}`,
         meta: {
           headers: JSON.stringify(request.headers),
         },
       },
     })
-  )
-  return new Response(`request method: ${request.method}!`)
+  );
+  return new Response(`request method: ${request.method}!`);
 }
 ```
 
