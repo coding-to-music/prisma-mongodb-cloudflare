@@ -8,6 +8,8 @@ https://github.com/coding-to-music/prisma-mongodb-cloudflare
 
 https://prisma-mongodb-cloudflare.coding-to-music.workers.dev
 
+https://github.com/prisma/prisma/issues/13434
+
 By Prisma Documentation - Guides
 
 https://www.prisma.io/docs/guides/deployment/deployment-guides/deploying-to-cloudflare-workers
