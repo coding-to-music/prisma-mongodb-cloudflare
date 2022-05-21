@@ -486,3 +486,35 @@ request method: GET!
 You're all set! You've successfully deployed a Cloudflare Worker written in TypeScript that uses Prisma to talk to your MongoDB database.
 
 Give yourself a pat on the back, you deserve it!
+
+# Errors
+
+```java
+npx wrangler dev
+```
+
+Output
+
+```java
+👀  ./node_modules/@prisma/client/runtime/index.js
+Module not found: Error: Can't resolve 'async_hooks' in '/mnt/volume_nyc1_01/prisma-mongodb-cloudflare/node_modules/@prisma/client/runtime'
+resolve 'async_hooks' in '/mnt/volume_nyc1_01/prisma-mongodb-cloudflare/node_modules/@prisma/client/runtime'
+  Parsed request is a module
+  using description file: /mnt/volume_nyc1_01/prisma-mongodb-cloudflare/node_modules/@prisma/client/package.json (relative path: ./runtime)
+    Field 'browser' doesn't contain a valid alias configuration
+    resolve as module
+```
+
+snip
+
+```java
+[/mnt/volume_nyc1_01/prisma-mongodb-cloudflare/node_modules/util/types]
+[/mnt/volume_nyc1_01/prisma-mongodb-cloudflare/node_modules/util/types.ts]
+[/mnt/volume_nyc1_01/prisma-mongodb-cloudflare/node_modules/util/types.tsx]
+[/mnt/volume_nyc1_01/prisma-mongodb-cloudflare/node_modules/util/types.js]
+ @ ./node_modules/@prisma/client/runtime/index.js 33546:27-48
+ @ ./node_modules/.prisma/client/index.js
+ @ ./node_modules/@prisma/client/index.js
+ @ ./src/index.ts
+Error: webpack returned an error. Try configuring `entry` in your webpack config relative to the current working directory, or setting `context = __dirname` in your webpack config.
+```
