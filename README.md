@@ -1,12 +1,86 @@
+# prisma-mongodb-cloudflare
+
 # Deploy a TypeScript application to Cloudflare Workers that connects to MongoDB Atlas using Prisma
 
----
+# 🚀 Javascript full-stack 🚀
 
-title: 'Deploying to Cloudflare Workers'
-metaTitle: 'Deploying to Cloudflare Workers'
-metaDescription: 'Learn how to deploy a TypeScript application to Cloudflare Workers that connects to MongoDB Atlas.'
+https://github.com/coding-to-music/prisma-mongodb-cloudflare
 
----
+https://prisma-mongodb-cloudflare.coding-to-music.workers.dev
+
+By Prisma Documentation - Guides
+
+https://www.prisma.io/docs/guides/deployment/deployment-guides/deploying-to-cloudflare-workers
+
+## Environment Values
+
+```java
+# Environment variables declared in this file are automatically made available to Prisma.
+# See the documentation for more detail: https://pris.ly/d/prisma-schema#using-environment-variables
+
+# Prisma supports the native connection string format for PostgreSQL, MySQL, SQLite, SQL Server and MongoDB (Preview).
+# See the documentation for all the connection string options: https://pris.ly/d/connection-strings
+
+DATABASE_URL="prisma://aws-us-east-1.prisma-data.com/?api_key=get-from-prisma-dashboard"
+
+MONGODB_URI="mongodb+srv://userid:password@cluster0.zadqe.mongodb.net/prisma-mongodb-cloudflare?retryWrites=true&w=majority"
+
+# DATABASE_URL="postgresql://johndoe:randompassword@localhost:5432/mydb?schema=public"
+```
+
+## GitHub
+
+```java
+git init
+git add .
+git remote remove origin
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:coding-to-music/prisma-mongodb-cloudflare.git
+git push -u origin main
+vercel --prod --confirm
+```
+
+https://vercel.com/guides/nextjs-prisma-postgres
+
+## Step 3. Install and generate Prisma Client
+
+Before you can access your database from Next.js using Prisma, you first need to install Prisma Client in your app. You can install it via npm as follows:
+
+```java
+npm install @prisma/client
+```
+
+Install the Prisma Client package.
+
+Because Prisma Client is tailored to your own schema, you need to update it every time your Prisma schema file is changing by running the following command:
+
+```java
+npx prisma generate
+```
+
+Regenerate your Prisma Schema.
+
+Output
+
+```java
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+
+✔ Generated Prisma Client (3.14.0 | library) to ./node_modules/@prisma/client in 147ms
+You can now start using Prisma Client in your code. Reference: https://pris.ly/d/client
+
+
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
+
+```
+
+# Deploy a TypeScript application to Cloudflare Workers that connects to MongoDB Atlas using Prisma
+
+- title: 'Deploying to Cloudflare Workers'
+- metaTitle: 'Deploying to Cloudflare Workers'
+- metaDescription: 'Learn how to deploy a TypeScript application to Cloudflare Workers that connects to MongoDB Atlas.'
 
 https://www.prisma.io/docs/guides/deployment/deployment-guides/deploying-to-cloudflare-workers
 
@@ -110,39 +184,39 @@ Wrangler has built-in webpack support that can be used to compile your code in d
 To configure webpack support, first create a `webpack.config.js` in the project root with the following code:
 
 ```js
-const path = require('path')
+const path = require("path");
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: "./src/index.ts",
   output: {
-    filename: 'worker.js',
-    path: path.join(__dirname, 'dist'),
+    filename: "worker.js",
+    path: path.join(__dirname, "dist"),
   },
   // Cloudflare Worker environment is similar to a webworker
-  target: 'webworker',
+  target: "webworker",
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
-+   // Alias for resolving the Prisma Client properly
-+   alias: {
-+     '@prisma/client$': require.resolve('@prisma/client'),
-+   },
+    extensions: [".ts", ".tsx", ".js"],
+    // Alias for resolving the Prisma Client properly
+    alias: {
+      "@prisma/client$": require.resolve("@prisma/client"),
+    },
   },
-  mode: 'development',
+  mode: "development",
   // Wrangler doesn't like eval which devtools use in development.
-  devtool: 'none',
+  devtool: "none",
   module: {
     rules: [
       {
         // Compile Typescript code
         test: /\.tsx?$/,
-        loader: 'ts-loader',
+        loader: "ts-loader",
         options: {
           transpileOnly: true,
         },
       },
     ],
   },
-}
+};
 ```
 
 Next, add the following line to your `wrangler.toml` file to point Wrangler to use this webpack configuration:
@@ -318,6 +392,12 @@ async function handleEvent(event: FetchEvent): Promise<Response> {
 ```
 
 Run `npx wrangler dev` to see your worker in development:
+
+```java
+npx wrangler dev
+```
+
+Output
 
 ```
 👂  Listening on http://127.0.0.1:8787
