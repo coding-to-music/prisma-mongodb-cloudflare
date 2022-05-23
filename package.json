@@ -2,7 +2,7 @@
   "name": "prisma-mongodb-cloudflare",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/worker.js",
   "scripts": {
     "dev": "npx wrangler dev",
     "deploy": "git add . && git commit -m Build && git push",
