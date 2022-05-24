@@ -1,9 +1,3 @@
 name = "prisma-mongodb-cloudflare"
-type = "webpack"
+compatibility_date = "2022-05-24"
 webpack_config = "webpack.config.js"
-route = ''
-zone_id = ''
-usage_model = ''
-compatibility_flags = []
-workers_dev = true
-compatibility_date = "2022-05-21"
